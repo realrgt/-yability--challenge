@@ -38,5 +38,20 @@ void main() {
       },
     );
   });
-  group('toJson', () {});
+  group('toJson', () {
+    test(
+      'should return a JSON map containing the proper data',
+      () async {
+        // arrange
+        final expectedMap = {
+          'name': 'fake-name',
+          'price': 1.0,
+        };
+        // act
+        final result = tProductModel.toJson();
+        // assert
+        expect(result, equals(expectedMap));
+      },
+    );
+  });
 }
