@@ -21,8 +21,12 @@ class ProductRepositoryImpl implements IProductRepository {
   }
 
   @override
-  Future<Either<Failure, Product>> addProduct(Product product) {
-    // TODO: implement addProduct
-    throw UnimplementedError();
+  Future<Either<Failure, Unit>> addProduct(Product product) async {
+    try {
+      await localDataSource.cacheProduct(product);
+      return const Right(unit);
+    } on CacheException catch (e) {
+      return Left(CacheFailure(message: e.message));
+    }
   }
 }

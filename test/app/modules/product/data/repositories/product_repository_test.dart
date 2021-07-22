@@ -22,7 +22,6 @@ void main() {
   });
 
   group('getProducts', () {
-    final tProduct = ProductModel(name: 'fake-name', price: 1.0);
     final tProductsList = [
       ProductModel(name: 'banana', price: 10.0),
       ProductModel(name: 'sweet', price: 1.0),
@@ -56,5 +55,34 @@ void main() {
     );
   });
 
-  group('addProduct', () {});
+  group('addProduct', () {
+    final tProduct = ProductModel(name: 'fake-name', price: 1.0);
+    registerFallbackValue(tProduct);
+
+    test(
+      'should place a new product in cache when datasource is called',
+      () async {
+        // arrange
+        when(() => mockProductLocalDataSource.cacheProduct(any()))
+            .thenAnswer((_) async {});
+        // act
+        final result = await repository.addProduct(tProduct);
+        // assert
+        expect(result, isA<Right<dynamic, Unit>>());
+      },
+    );
+
+    test(
+      'should return a CacheFailure when datasource aint successful',
+      () async {
+        // arrange
+        when(() => mockProductLocalDataSource.cacheProduct(any()))
+            .thenThrow(CacheException());
+        // act
+        final result = await repository.addProduct(tProduct);
+        // assert
+        expect(result.leftMap((l) => l is CacheFailure), left(true));
+      },
+    );
+  });
 }

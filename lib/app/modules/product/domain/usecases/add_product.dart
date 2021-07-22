@@ -6,19 +6,19 @@ import '../../../../core/usecases/usecase.dart';
 import '../entities/product.dart';
 import '../repositories/product_repository.dart';
 
-class AddProduct implements IUseCase<Product, Params> {
+class AddProduct implements IUseCase<Unit, Params> {
   final IProductRepository repository;
   AddProduct({required this.repository});
 
   @override
-  Future<Either<Failure, Product>> call(Params params) {
+  Future<Either<Failure, Unit>> call(Params params) {
     return repository.addProduct(params.product);
   }
 }
 
 class Params extends Equatable {
   final Product product;
-  Params({required this.product});
+  const Params({required this.product});
 
   @override
   List<Object> get props => [product];

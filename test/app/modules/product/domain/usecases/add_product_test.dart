@@ -23,11 +23,12 @@ void main() {
     () async {
       // arrange
       when(() => mockProductRepository.addProduct(newProduct))
-          .thenAnswer((_) async => Right(newProduct));
+          .thenAnswer((_) async => const Right(unit));
       // act
-      final result = await usecase(Params(product: newProduct));
+      final either = await usecase(Params(product: newProduct));
+      final result = either.fold((l) => null, (r) => r);
       // assert
-      expect(result, equals(Right(newProduct)));
+      expect(result, equals(unit));
       verify(() => mockProductRepository.addProduct(newProduct)).called(1);
     },
   );
