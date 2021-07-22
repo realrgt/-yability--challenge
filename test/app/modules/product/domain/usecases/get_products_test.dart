@@ -25,7 +25,8 @@ void main() {
     'should get a list of products from the repository when called',
     () async {
       // arrange
-      when(() => mockProductRepository.getProducts()).thenAnswer((_) async => Right(tProductsList));
+      when(() => mockProductRepository.getProducts())
+          .thenAnswer((_) async => Right(tProductsList));
       // act
       final result = await usecase(NoParams());
       // assert
