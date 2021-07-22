@@ -1,0 +1,14 @@
+[
+  {
+    "name": "beans",
+    "price": 1.0
+  },
+  {
+    "name": "meat",
+    "price": 10.0
+  },
+  {
+    "name": "banana",
+    "price": 3
+  }
+]

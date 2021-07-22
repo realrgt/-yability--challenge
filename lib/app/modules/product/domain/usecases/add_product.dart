@@ -1,11 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:yability_challenge/app/core/errors/failures.dart';
-import 'package:yability_challenge/app/modules/product/domain/repositories/product_repository.dart';
-
+import '../../../../core/errors/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/product.dart';
+import '../repositories/product_repository.dart';
 
 class AddProduct implements IUseCase<Product, Params> {
   final IProductRepository repository;
