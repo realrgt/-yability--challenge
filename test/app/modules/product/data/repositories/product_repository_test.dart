@@ -3,12 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:yability_challenge/app/core/errors/exceptions.dart';
 import 'package:yability_challenge/app/core/errors/failures.dart';
-import 'package:yability_challenge/app/modules/product/data/datasources/product_local_datasource.dart';
+import 'package:yability_challenge/app/modules/product/data/datasources/product_hive_datasource.dart';
 import 'package:yability_challenge/app/modules/product/data/models/product_model.dart';
 import 'package:yability_challenge/app/modules/product/data/repositories/product_repository.dart';
 
 class MockProductLocalDataSource extends Mock
-    implements IProductLocalDataSource {}
+    implements IProductHiveDataSource {}
 
 void main() {
   late ProductRepositoryImpl repository;

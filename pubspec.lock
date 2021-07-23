@@ -21,7 +21,7 @@ packages:
       name: args
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.2.0"
   async:
     dependency: transitive
     description:
@@ -186,11 +186,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_web_plugins:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -205,6 +200,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  hive:
+    dependency: "direct main"
+    description:
+      name: hive
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.4"
+  hive_flutter:
+    dependency: "direct main"
+    description:
+      name: hive_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -303,10 +312,24 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  path_provider:
+    dependency: "direct main"
+    description:
+      name: path_provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
   path_provider_linux:
     dependency: transitive
     description:
       name: path_provider_linux
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  path_provider_macos:
+    dependency: transitive
+    description:
+      name: path_provider_macos
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
@@ -370,48 +393,6 @@ packages:
     dependency: transitive
     description:
       name: pub_semver
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  shared_preferences:
-    dependency: "direct main"
-    description:
-      name: shared_preferences
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.6"
-  shared_preferences_linux:
-    dependency: transitive
-    description:
-      name: shared_preferences_linux
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  shared_preferences_macos:
-    dependency: transitive
-    description:
-      name: shared_preferences_macos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  shared_preferences_platform_interface:
-    dependency: transitive
-    description:
-      name: shared_preferences_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  shared_preferences_web:
-    dependency: transitive
-    description:
-      name: shared_preferences_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  shared_preferences_windows:
-    dependency: transitive
-    description:
-      name: shared_preferences_windows
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
@@ -524,7 +505,7 @@ packages:
       name: triple
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.2.0+1"
   typed_data:
     dependency: transitive
     description:

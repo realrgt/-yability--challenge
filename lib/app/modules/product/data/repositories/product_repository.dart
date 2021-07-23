@@ -4,10 +4,11 @@ import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
 import '../../domain/entities/product.dart';
 import '../../domain/repositories/product_repository.dart';
-import '../datasources/product_local_datasource.dart';
+import '../datasources/product_hive_datasource.dart';
+import '../models/product_model.dart';
 
 class ProductRepositoryImpl implements IProductRepository {
-  final IProductLocalDataSource localDataSource;
+  final IProductHiveDataSource localDataSource;
   ProductRepositoryImpl({required this.localDataSource});
 
   @override
@@ -23,7 +24,7 @@ class ProductRepositoryImpl implements IProductRepository {
   @override
   Future<Either<Failure, Unit>> addProduct(Product product) async {
     try {
-      await localDataSource.cacheProduct(product);
+      await localDataSource.cacheProduct(product as ProductModel);
       return const Right(unit);
     } on CacheException catch (e) {
       return Left(CacheFailure(message: e.message));
