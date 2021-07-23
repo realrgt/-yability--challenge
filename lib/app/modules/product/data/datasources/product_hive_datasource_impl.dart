@@ -3,10 +3,11 @@ import 'dart:convert';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../../../core/errors/exceptions.dart';
 import '../models/product_model.dart';
 import 'product_hive_datasource.dart';
 
-const CACHED_PRODUCTS = 'CACHED_PRODUCTS';
+const cacheProducts = 'CACHED_PRODUCTS';
 
 class ProductHiveDataSourceImpl implements IProductHiveDataSource {
   final HiveInterface hive;
@@ -22,7 +23,8 @@ class ProductHiveDataSourceImpl implements IProductHiveDataSource {
   @override
   Future<List<ProductModel>> getCachedProducts() async {
     var box = await hive.openBox('db');
-    final List products = await box.get(CACHED_PRODUCTS);
+    if (box.isEmpty) throw CacheException();
+    final List products = await box.get(cacheProducts);
     return products.map((product) => ProductModel.fromJson(product)).toList();
   }
 

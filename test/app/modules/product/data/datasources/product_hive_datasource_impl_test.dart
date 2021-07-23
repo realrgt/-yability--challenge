@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:yability_challenge/app/core/errors/exceptions.dart';
 import 'package:yability_challenge/app/modules/product/data/datasources/product_hive_datasource_impl.dart';
 import 'package:yability_challenge/app/modules/product/data/models/product_model.dart';
 
@@ -32,7 +33,6 @@ void main() {
         // arrange
         when(() => mockHiveInterface.openBox(any()))
             .thenAnswer((_) async => mockHiveBox);
-        when(() => mockHiveBox.length).thenReturn(jsonProductList.length);
         when(() => mockHiveBox.get(any()))
             .thenAnswer((_) async => jsonProductList);
         // act
@@ -44,6 +44,22 @@ void main() {
 
         // assert
         expect(result, expected);
+      },
+    );
+
+    test(
+      'should throw a CacheExeption when there is not a cached value',
+      () async {
+        // arrange
+        when(() => mockHiveInterface.openBox(any()))
+            .thenAnswer((_) async => mockHiveBox);
+        when(() => mockHiveBox.isEmpty).thenReturn(true);
+        // act
+
+        final call = datasource.getCachedProducts;
+
+        // assert
+        expect(() => call(), throwsA(isA<CacheException>()));
       },
     );
   });
