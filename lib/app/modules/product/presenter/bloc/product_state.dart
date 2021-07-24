@@ -24,3 +24,5 @@ class ProductError extends ProductState {
 
   const ProductError({required this.message}) : super();
 }
+
+class ProductCached extends ProductState {}
