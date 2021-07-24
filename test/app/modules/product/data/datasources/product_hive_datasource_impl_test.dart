@@ -33,6 +33,7 @@ void main() {
         // arrange
         when(() => mockHiveInterface.openBox(any()))
             .thenAnswer((_) async => mockHiveBox);
+        when(() => mockHiveBox.isEmpty).thenReturn(false);
         when(() => mockHiveBox.get(any()))
             .thenAnswer((_) async => jsonProductList);
         // act
@@ -74,7 +75,7 @@ void main() {
             .thenAnswer((_) async => mockHiveBox);
         when(() => mockHiveBox.add(any())).thenAnswer((_) async => 1);
         // act
-        final result = await datasource.cacheProduct(tProductModel);
+        await datasource.cacheProduct(tProductModel);
         // assert
         final expectedJsonProduct = jsonEncode(tProductModel.toJson());
         verify(() => mockHiveBox.add(expectedJsonProduct)).called(1);
