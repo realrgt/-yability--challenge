@@ -1,3 +1,4 @@
+import 'package:digit_to_word/digit_to_word.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/product.dart';
@@ -17,9 +18,16 @@ class ProductListWidget extends StatelessWidget {
         final product = products[index];
         return ListTile(
           title: Text(product.name),
-          subtitle: Text('${product.price} MZN'),
+          // subtitle: Text('${product.price} MZN'),
+          subtitle: Text(
+            '${product.price} - ${numberSpeller(product.price).toUpperCase()} MZN',
+          ),
         );
       },
     );
+  }
+
+  String numberSpeller(double value) {
+    return DigitToWord.translate(value.toInt(), withDashes: false);
   }
 }
