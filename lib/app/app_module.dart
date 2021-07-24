@@ -7,7 +7,7 @@ class AppModule extends Module {
   @override
   final List<Bind> binds = [
     //! External
-    Bind.lazySingleton((i) => Hive),
+    Bind.factory<HiveInterface>((i) => Hive),
   ];
 
   @override

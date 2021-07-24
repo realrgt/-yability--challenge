@@ -34,11 +34,10 @@ void main() {
         when(() => mockHiveInterface.openBox(any()))
             .thenAnswer((_) async => mockHiveBox);
         when(() => mockHiveBox.isEmpty).thenReturn(false);
-        when(() => mockHiveBox.get(any()))
-            .thenAnswer((_) async => jsonProductList);
+        when(() => mockHiveBox.values).thenReturn(jsonProductList);
         // act
         final expected = jsonProductList
-            .map((jsonMap) => ProductModel.fromJson(jsonMap))
+            .map((product) => ProductModel.fromJson(product))
             .toList();
 
         final result = await datasource.getCachedProducts();
