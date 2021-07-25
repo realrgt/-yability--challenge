@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../data/models/product_model.dart';
 import '../bloc/bloc.dart';
+import 'widgets.dart';
 
 class NewProductForm extends StatefulWidget {
   const NewProductForm({Key? key}) : super(key: key);
@@ -29,29 +30,17 @@ class _NewContactFormState extends State<NewProductForm> {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Name',
-                      labelStyle: TextStyle(color: Colors.green),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green, width: 2.0),
-                      ),
-                    ),
-                    onSaved: (value) => _name = value!,
+                  child: CustomTextFieldWidget(
+                    label: 'Name',
+                    onSaved: (newValue) => _name = newValue!,
                   ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Price',
-                      labelStyle: TextStyle(color: Colors.green),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green, width: 2.0),
-                      ),
-                    ),
+                  child: CustomTextFieldWidget(
                     keyboardType: TextInputType.number,
-                    onSaved: (value) => _price = value!,
+                    label: 'Price',
+                    onSaved: (newValue) => _price = newValue!,
                   ),
                 ),
               ],
@@ -71,12 +60,13 @@ class _NewContactFormState extends State<NewProductForm> {
               },
               child: const Text('Add New Product'),
               style: ElevatedButton.styleFrom(
-                  primary: Theme.of(context).accentColor,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30.0,
-                    vertical: 18.0,
-                  ),
-                  textStyle: const TextStyle(fontSize: 16.0)),
+                primary: Theme.of(context).accentColor,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 18.0,
+                ),
+                textStyle: const TextStyle(fontSize: 16.0),
+              ),
             )
           ],
         ),

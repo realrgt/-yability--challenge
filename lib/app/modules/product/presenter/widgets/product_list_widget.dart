@@ -18,9 +18,8 @@ class ProductListWidget extends StatelessWidget {
         final product = products[index];
         return ListTile(
           title: Text(product.name),
-          // subtitle: Text('${product.price} MZN'),
           subtitle: Text(
-            '${product.price} - ${numberSpeller(product.price).toUpperCase()} MZN',
+            '${product.price} MT - ${numberSpeller(product.price).toUpperCase()} MZN',
           ),
         );
       },
